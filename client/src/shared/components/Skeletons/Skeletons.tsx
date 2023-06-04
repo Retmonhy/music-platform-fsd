@@ -1,6 +1,6 @@
 import { Box, Grid, Skeleton } from "@mui/material";
-import { useWindowSize } from "@shared/hooks";
 import { FC } from "react";
+import { useWindowSize } from "@shared/hooks";
 
 interface ITrackListSkeletonProps {
   amount: number;

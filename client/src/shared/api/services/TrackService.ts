@@ -1,6 +1,16 @@
 import { api } from "..";
-import { ICreateTrackResponse, IDeleteTrackResponse, IPaginationParams, ISearchRequest, ITrack } from "@shared/types";
+import { IDefaultResponse, IPaginationParams, ITrack } from "@shared/types";
 import { TrackEndpoints } from "../endpoints";
+interface ICreateTrackResponse extends IDefaultResponse {
+  track: ITrack;
+}
+interface IDeleteTrackResponse extends IDefaultResponse {
+  trackId: string;
+}
+export interface ISearchRequest {
+  query: string;
+  owner_id?: string;
+}
 export class TrackService {
   static fetchTracksReq = (params: IPaginationParams) => {
     return api.get<ITrack[]>(TrackEndpoints.TRACKS, { params });

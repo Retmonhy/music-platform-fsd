@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useTypedSelector } from "@shared/hooks/useTypedSelector";
-
-// import { SearchInput } from "@entities/track/components";
-import { TrackList } from "@entities/track";
-import { H1 } from "@shared/components";
-import { getIsSsrMobile } from "@shared/lib";
-import { useAction, useIntersect } from "@shared/hooks";
-import { Intersect } from "@shared/components";
-import { TrackListSkeleton } from "@shared/components/Skeletons";
-import { Local } from "@shared/const/Localization";
 import { GetServerSidePropsContext } from "next/types";
-import dynamic from "next/dynamic";
-import { useAppDispatch } from "@shared/store";
+import React, { useEffect, useState } from "react";
+
+import { TrackList, useTrackActions } from "@entities/track";
+import { Intersect } from "@shared/components";
+import { H1, TrackListSkeleton } from "@shared/components";
+import { Local } from "@shared/const";
+import { useTypedSelector } from "@shared/hooks";
+import { useAppDispatch, useIntersect } from "@shared/hooks";
+import { getIsSsrMobile } from "@shared/lib";
+import { PageTrackList } from "./components";
 const pageSize = 10;
 // const DynamicPlaylistModal = dynamic(() => import('../../widgets/PlaylistModal/PlaylistModal'), { loading: () => <p>Loading...</p> });
 
 const TrackPage: React.FC = () => {
-  const { _track } = useAction();
+  const _trackActions = useTrackActions();
   const { tracks, searchedTracks, error, isLoading, isSearching } = useTypedSelector((st) => st.track);
-  const { onIntersect: fetchTracks } = useIntersect(_track.fetchTracks, pageSize);
+  const { onIntersect: fetchTracks } = useIntersect(_trackActions.fetchTracks, pageSize);
   const [isFirstRequest, setIsFirstRequest] = useState<boolean>(true);
   useEffect(() => {
     fetchTracks().finally(() => {
@@ -28,7 +25,7 @@ const TrackPage: React.FC = () => {
   // const playlist = usePlaylist();
   const dispatch = useAppDispatch();
   const searchHandler = (query: string) => {
-    dispatch(_track.searchTracks({ query }));
+    dispatch(_trackActions.searchTracks({ query }));
   };
   return (
     <>
@@ -38,10 +35,10 @@ const TrackPage: React.FC = () => {
       {isFirstRequest ? (
         <TrackListSkeleton amount={10} />
       ) : searchedTracks && searchedTracks.length ? (
-        <TrackList tracks={searchedTracks} />
+        <PageTrackList tracks={searchedTracks} />
       ) : (
         <Intersect onIntersect={fetchTracks} id='track_intersection' isFetching={isLoading}>
-          <TrackList tracks={tracks} />
+          <PageTrackList tracks={tracks} />
         </Intersect>
       )}
       {/* {playlist.isVisible && (

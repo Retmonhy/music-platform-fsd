@@ -10,7 +10,7 @@ import { FC, useState } from "react";
 import { useRouter } from "next/router";
 import { useTypedSelector } from "@shared/hooks";
 import { MenuElements } from "@shared/const";
-import { Player } from "@entities/Player";
+import { Player } from "@entities/player";
 
 const drawerWidth = 280;
 

@@ -1,14 +1,17 @@
-import React, { createContext, useEffect } from "react";
-import { Provider } from "react-redux";
+import React, { createContext } from "react";
 import { AppProps } from "next/app";
-import store, { wrapper } from "@shared/store";
+import { withProviders, WithStoreProvider } from "../app";
 import { MainLayout } from "../widgets";
 // import { debouncedFetchPl } from './account/playlists.page';
 import "../app/styles/Global.scss";
 import "../app/styles/global.css";
 
 export const IsSsrMobileContext = createContext(false);
-const WrappedApp: React.FC<AppProps> = ({ Component, ...pageProps }) => {
+
+interface CustomPageProps {
+  isSsrMobile: boolean;
+}
+const WrappedApp: React.FC<AppProps> = ({ Component, pageProps }: AppProps<CustomPageProps>) => {
   // const { store, props } = wrapper.useWrappedStore(pageProps); //это строчка создавала дополнительный инстанс стора
   //так как WrappedApp вызывается при рендере кадой страницы, то наверное будет вызыватьсяэтот юзЭффект всегда
 
@@ -26,14 +29,13 @@ const WrappedApp: React.FC<AppProps> = ({ Component, ...pageProps }) => {
   // 	}
   // }, []);
   return (
-    //ts-ignore
-    <IsSsrMobileContext.Provider value={pageProps.pageProps.isSsrMobile}>
-      <Provider store={store}>
+    <WithStoreProvider>
+      <IsSsrMobileContext.Provider value={pageProps.isSsrMobile}>
         <MainLayout>
           <Component {...pageProps} />
         </MainLayout>
-      </Provider>
-    </IsSsrMobileContext.Provider>
+      </IsSsrMobileContext.Provider>
+    </WithStoreProvider>
   );
 };
-export default wrapper.withRedux(WrappedApp);
+export default withProviders(WrappedApp);
