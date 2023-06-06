@@ -4,11 +4,13 @@ import { Store, combineReducers } from "redux";
 import thunk from "redux-thunk";
 
 import { playerReducer } from "@entities/player";
+import { playlistReducer } from "@entities/playlist";
 import { trackReducer } from "@entities/track";
 
 const rootReducer = combineReducers({
   player: playerReducer,
   track: trackReducer,
+  playlist: playlistReducer,
 });
 
 const reducer = (state: RootState, action) => {

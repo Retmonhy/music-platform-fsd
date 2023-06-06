@@ -1,5 +1,4 @@
-import { IDefaultResponse } from "@shared/types";
-import { ITrack } from "../model/types";
+import { IDefaultResponse, ITrack } from "@shared/types";
 
 export enum TrackEndpoints {
   TRACKS = "/tracks",
@@ -14,7 +13,7 @@ export interface ICreateTrackResponse extends IDefaultResponse {
 export interface IDeleteTrackResponse extends IDefaultResponse {
   trackId: string;
 }
-export interface ISearchRequest {
+export interface ISearchTrackRequest {
   query: string;
   owner_id?: string;
 }

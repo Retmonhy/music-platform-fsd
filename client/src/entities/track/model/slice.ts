@@ -1,8 +1,10 @@
-import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ITrackState, TrackActionTypes } from "./types";
-import { fetchTracks, searchTracks } from "./actions";
-import { isFulfilledAction, isPendingAction, isRejectedAction } from "@shared/lib";
-import { ITrack } from "@shared/types";
+import { AnyAction, PayloadAction, createSlice } from '@reduxjs/toolkit';
+
+import { isFulfilledAction, isPendingAction, isRejectedAction } from '@shared/lib';
+import { ITrack } from '@shared/types';
+
+import { fetchTracks, searchTracks } from './actions';
+import { ITrackState, TrackActionTypes } from './types';
 
 const initialState: ITrackState = {
   tracks: [],
@@ -10,7 +12,7 @@ const initialState: ITrackState = {
 
   searchedTracks: [],
   isSearching: false,
-  error: "",
+  error: '',
 };
 
 function validateActionType(actionType: string) {
@@ -48,7 +50,7 @@ function isTrackRejectedAction(action: AnyAction) {
 }
 
 export const TrackModel = createSlice({
-  name: "track",
+  name: 'track',
   initialState,
   reducers: {},
   extraReducers: (builder) => {

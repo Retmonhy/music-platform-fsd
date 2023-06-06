@@ -1,0 +1,14 @@
+{
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": true,
+  "jsxSingleQuote": true,
+  "singleQuote": true,
+  "importOrder": ["<THIRD_PARTY_MODULES>", "^@app", "^@processes", "^@pages", "^@widgets", "^@features", "^@entities", "^@shared", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderGroupNamespaceSpecifiers": true,
+  "printWidth": 160,
+  "bracketSameLine": true,
+  "endOfLine": "crlf"
+}

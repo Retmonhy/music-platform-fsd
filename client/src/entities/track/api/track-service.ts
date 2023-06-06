@@ -1,7 +1,6 @@
-import { IPaginationParams } from "@shared/types";
-import { ICreateTrackResponse, IDeleteTrackResponse, ISearchRequest, TrackEndpoints } from "./types";
 import { api } from "@shared/api";
-import { ITrack } from "../model/types";
+import { IPaginationParams, ITrack } from "@shared/types";
+import { ICreateTrackResponse, IDeleteTrackResponse, ISearchTrackRequest, TrackEndpoints } from "./types";
 
 export class TrackService {
   static fetchTracksReq = (params: IPaginationParams) => {
@@ -13,7 +12,7 @@ export class TrackService {
   static deleteTrackReq = (trackId: string) => {
     return api.delete<IDeleteTrackResponse>(`/tracks/${trackId}`);
   };
-  static searchTracksReq = (payload: ISearchRequest) => {
+  static searchTracksReq = (payload: ISearchTrackRequest) => {
     return api.get<ITrack[]>(TrackEndpoints.SEARCH, { params: { ...payload } });
   };
 }

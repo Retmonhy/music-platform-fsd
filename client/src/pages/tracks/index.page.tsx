@@ -1,14 +1,16 @@
-import { GetServerSidePropsContext } from "next/types";
-import React, { useEffect, useState } from "react";
+import { GetServerSidePropsContext } from 'next/types';
+import React, { useEffect, useState } from 'react';
 
-import { TrackList, useTrackActions } from "@entities/track";
-import { Intersect } from "@shared/components";
-import { H1, TrackListSkeleton } from "@shared/components";
-import { Local } from "@shared/const";
-import { useTypedSelector } from "@shared/hooks";
-import { useAppDispatch, useIntersect } from "@shared/hooks";
-import { getIsSsrMobile } from "@shared/lib";
-import { PageTrackList } from "./components";
+import { TrackList } from '@widgets/track';
+
+import { useTrackActions } from '@entities/track';
+
+import { H1, Intersect, SearchInput, TrackListSkeleton } from '@shared/components';
+import { Local } from '@shared/const';
+import { useTypedSelector } from '@shared/hooks';
+import { useAppDispatch, useIntersect } from '@shared/hooks';
+import { getIsSsrMobile } from '@shared/lib';
+
 const pageSize = 10;
 // const DynamicPlaylistModal = dynamic(() => import('../../widgets/PlaylistModal/PlaylistModal'), { loading: () => <p>Loading...</p> });
 
@@ -31,14 +33,14 @@ const TrackPage: React.FC = () => {
     <>
       <H1>{Local.Tracks.PageTitle}</H1>
       {error ? <H1>{error}</H1> : null}
-      {/* <SearchInput isSearching={isSearching} searchHandler={searchHandler} /> */}
+      <SearchInput isSearching={isSearching} searchHandler={searchHandler} label={Local.Tracks.SearchMusic} />
       {isFirstRequest ? (
         <TrackListSkeleton amount={10} />
       ) : searchedTracks && searchedTracks.length ? (
-        <PageTrackList tracks={searchedTracks} />
+        <TrackList tracks={searchedTracks} />
       ) : (
         <Intersect onIntersect={fetchTracks} id='track_intersection' isFetching={isLoading}>
-          <PageTrackList tracks={tracks} />
+          <TrackList tracks={tracks} />
         </Intersect>
       )}
       {/* {playlist.isVisible && (

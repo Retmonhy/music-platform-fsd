@@ -1,2 +1,2 @@
-export { useTrackContext, useTrackActions } from "./hooks";
-export { TrackContext } from "./helpers";
+export { useTrackContext, useTrackActions, useTrackSelector } from './hooks';
+export { TrackContext } from './helpers';

@@ -9,6 +9,7 @@ export * from "./Skeletons";
 export { Intersect } from "./Intersect";
 export { CustomInput } from "./CustomInput";
 export { BottomSheet } from "./BottomSheet";
+export { SearchInput } from "./SearchInput";
 export type { IBottomSheetProps } from "./BottomSheet";
 export { PopoverButton } from "./PopoverButton";
 export { ControlledInput } from "./ControlledInput";

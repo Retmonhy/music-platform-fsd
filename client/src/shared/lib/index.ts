@@ -1,3 +1,4 @@
+export { User } from "./User";
 export { audio, setAudioInstance } from "./audio";
 export { checkMobile } from "./checkMobile";
 export { debounce } from "./debounce";

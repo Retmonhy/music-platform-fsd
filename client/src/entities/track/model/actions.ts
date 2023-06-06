@@ -1,9 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { TrackService } from "@shared/api/services";
 import { Toast } from "@shared/components";
-import { TrackActionTypes } from "./types";
 import { IPaginationParams, ITrack } from "@shared/types";
-import { ISearchRequest } from "../api/types";
+import { TrackService, ISearchTrackRequest } from "../api";
+import { TrackActionTypes } from "./types";
 
 export const fetchTracks = createAsyncThunk<ITrack[], IPaginationParams, { rejectValue: ITrack[] }>(TrackActionTypes.FETCH_TRACKS, async (params, ta) => {
   try {
@@ -15,7 +14,7 @@ export const fetchTracks = createAsyncThunk<ITrack[], IPaginationParams, { rejec
     ta.rejectWithValue([]);
   }
 });
-export const searchTracks = createAsyncThunk<ITrack[], ISearchRequest, { rejectValue: ITrack[] }>(TrackActionTypes.SEARCH_TRACKS, async (payload, ta) => {
+export const searchTracks = createAsyncThunk<ITrack[], ISearchTrackRequest, { rejectValue: ITrack[] }>(TrackActionTypes.SEARCH_TRACKS, async (payload, ta) => {
   try {
     if (!payload.query.length) return [];
 

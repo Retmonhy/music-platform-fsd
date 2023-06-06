@@ -1,4 +1,3 @@
-export { TrackItem } from "./TrackItem";
-export { TrackList } from "./TrackList";
-export { trackReducer } from "./model";
-export { useTrackContext, useTrackActions } from "./lib";
+export { TrackItem } from './TrackItem';
+export { trackReducer } from './model';
+export { useTrackContext, useTrackActions, useTrackSelector } from './lib';
