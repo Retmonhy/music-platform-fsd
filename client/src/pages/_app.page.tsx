@@ -1,10 +1,12 @@
-import React, { createContext } from "react";
-import { AppProps } from "next/app";
-import { withProviders, WithStoreProvider } from "../app";
-import { MainLayout } from "../widgets";
+import { AppProps } from 'next/app';
+import React, { createContext } from 'react';
+
+import { WithStoreProvider, withProviders } from '@app';
 // import { debouncedFetchPl } from './account/playlists.page';
-import "../app/styles/Global.scss";
-import "../app/styles/global.css";
+import '@app/styles/Global.scss';
+import '@app/styles/global.css';
+
+import { MainLayout } from '@widgets/main-layout';
 
 export const IsSsrMobileContext = createContext(false);
 

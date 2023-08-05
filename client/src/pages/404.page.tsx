@@ -1,11 +1,12 @@
-import { Button } from "@mui/material";
-import { H1 } from "@shared/components";
-import { useRouter } from "next/router";
+import { Button } from '@mui/material';
+import { useRouter } from 'next/router';
+
+import { H1 } from '@shared/components';
 
 const Custom404 = () => {
   const router = useRouter();
   const returnToMain = () => {
-    router.replace("/");
+    router.replace('/');
   };
   return (
     <>

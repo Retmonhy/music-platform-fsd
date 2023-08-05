@@ -9,8 +9,9 @@
     "baseUrl": ".",
     "paths": {
       "@app": ["src/1_app"],
-      "@pages": ["src/2_pages"],
-      "@pages/*": ["src/2_pages/*"],
+      "@app/*": ["src/1_app/*"],
+      "@pages": ["src/pages"],
+      "@pages/*": ["src/pages/*"],
       "@widgets/*": ["src/3_widgets/*"],
       "@features/*": ["src/4_features/*"],
       "@entities/*": ["src/5_entities/*"],

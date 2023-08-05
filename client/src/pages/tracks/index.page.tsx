@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import { GetServerSidePropsContext } from 'next/types';
 import React from 'react';
 
+import { usePlaylistModal } from '@widgets/playlist/playlist-modal';
 import { TrackListWidget } from '@widgets/track/TrackList';
 
 import { SearchTracks } from '@features/track';
@@ -12,10 +13,8 @@ import { H1 } from '@shared/components';
 import { Local } from '@shared/const';
 import { getIsSsrMobile } from '@shared/lib';
 
-import { usePlaylistModal } from '../../widgets/playlist/playlist-modal';
-
 // const pageSize = 10;
-const DynamicPlaylistModal = dynamic(() => import('../../widgets/playlist'), { loading: () => <p>Loading...</p> });
+const DynamicPlaylistModal = dynamic(() => import('@widgets/playlist'), { loading: () => <p>Loading...</p> });
 
 const TrackPage: React.FC = () => {
   const { error } = useTrackSelector();
