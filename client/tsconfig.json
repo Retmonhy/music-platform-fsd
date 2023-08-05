@@ -8,11 +8,13 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@shared": ["src/shared"],
-      "@shared/*": ["src/shared/*"],
-      "@widgets/*": ["src/widgets/*"],
-      "@widgets": ["src/widgets"],
-      "@entities/*": ["src/entities/*"]
+      "@app": ["src/1_app"],
+      "@pages": ["src/2_pages"],
+      "@pages/*": ["src/2_pages/*"],
+      "@widgets/*": ["src/3_widgets/*"],
+      "@features/*": ["src/4_features/*"],
+      "@entities/*": ["src/5_entities/*"],
+      "@shared/*": ["src/6_shared/*"]
     },
     "noEmit": true,
     "incremental": true,
@@ -24,7 +26,7 @@
     "strictFunctionTypes": false,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "src/pages/tracks/components/ActionMenu"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
   "exclude": ["node_modules"]
 }
 
