@@ -40,7 +40,7 @@ export const Uploader: FC<IUploaderProps> = ({ onUpload }) => {
       </SquareDiv>
     </Box>
   ) : (
-    <Box paddingRight={4} className='plm-uploader'>
+    <Box paddingRight={3} className='plm-uploader'>
       {info?.cover ? (
         <Box className='plm-uploader__container relative'>
           <SquareDiv

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { useTrackActions } from '@entities/track';
 
-import { Intersect, Loader, TrackListSkeleton } from '@shared/components';
+import { Intersect, TrackListSkeleton } from '@shared/components';
 import { useIntersect, useTypedSelector } from '@shared/hooks';
 
 import { TrackListInternal } from './components';
@@ -22,8 +22,6 @@ export const TrackListWidget = () => {
       setIsFirstRequest(false);
     });
   }, []);
-
-  if (isFirstRequest) return <Loader />;
 
   return (
     <Grid container direction='column' className='relative'>

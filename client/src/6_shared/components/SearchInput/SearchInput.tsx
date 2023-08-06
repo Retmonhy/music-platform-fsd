@@ -1,6 +1,7 @@
-import { Box, debounce } from "@material-ui/core";
-import React, { FC } from "react";
-import { CustomInput, Loader } from "@shared/components";
+import { Box, debounce } from '@material-ui/core';
+import React, { FC } from 'react';
+
+import { CustomInput, Loader } from '@shared/components';
 
 interface ISearchInputProps {
   searchHandler: (query: string) => void;

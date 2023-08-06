@@ -1,5 +1,5 @@
 // libraries
-import { Box, Grid } from '@mui/material';
+import { Box } from '@mui/material';
 import React, { FC } from 'react';
 //hooks
 import { Control } from 'react-hook-form';
@@ -17,11 +17,11 @@ interface IPlaylistInfoProps {
 
 export const PlaylistInfo: FC<IPlaylistInfoProps> = ({ onUpload, control }) => {
   return (
-    <Box padding='24px'>
-      <Grid container direction='row' flexWrap='nowrap'>
+    <Box padding={3}>
+      <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap' }}>
         <Uploader onUpload={onUpload} />
         <PlaylistForm control={control} />
-      </Grid>
+      </Box>
     </Box>
   );
 };
