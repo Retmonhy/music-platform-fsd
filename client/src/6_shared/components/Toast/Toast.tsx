@@ -28,16 +28,16 @@ export class Toast {
     this.type = props.type;
     this.message = props.message;
 
-    this.closeToast = this.closeToast.bind(this);
-    this.renderToast.bind(this)();
+    this._closeToast = this._closeToast.bind(this);
+    this._renderToast.bind(this)();
   }
-  closeToast(event, reason: SnackbarCloseReason) {
+  private _closeToast(event, reason: SnackbarCloseReason) {
     if (reason === 'timeout') {
       this.isOpened = false;
-      this.renderToast();
+      this._renderToast();
     }
   }
-  renderToast() {
+  _renderToast() {
     Toast.container.render(
       <Snackbar
         anchorOrigin={{
@@ -48,7 +48,7 @@ export class Toast {
         open={this.isOpened}
         onClick={() => console.log('close toast')}
         autoHideDuration={5000}
-        onClose={this.closeToast}>
+        onClose={this._closeToast}>
         <Alert variant='filled' severity={this.type}>
           {this.message}
         </Alert>

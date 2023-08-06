@@ -12,7 +12,9 @@ import { IPlaylistData } from '@shared/types';
 export const usePlaylistModal = () => {
   //hooks
   const { info, isVisible, selectedTracks, mode } = usePlaylistModalSelector();
+  //actions от редакса по управлению плейлистами
   const _playlist = usePlaylistActions();
+  //actions от редакса по управлению модалкой плейлиста
   const _pModal = usePlaylistModalActions();
 
   const dispatch = useAppDispatch();

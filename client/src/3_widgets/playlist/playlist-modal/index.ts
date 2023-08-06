@@ -1,2 +1,3 @@
 export { usePlaylistModal } from './lib';
-export { PlaylistModalWidget } from './PlaylistModalWidget';
+//это наверное надо выпилить, если модалка будет зваться через класс
+export { default as PlaylistModalWidget } from './PlaylistModalWidget';

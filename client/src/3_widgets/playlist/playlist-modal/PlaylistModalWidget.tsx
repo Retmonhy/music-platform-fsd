@@ -36,4 +36,3 @@ const PlaylistModalWidget: FC<IPlaylistModalProps> = ({ isVisible }) => {
   );
 };
 export default PlaylistModalWidget;
-export { PlaylistModalWidget };

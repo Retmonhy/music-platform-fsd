@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app';
+import dynamic from 'next/dynamic';
 import React, { createContext } from 'react';
 
 import { WithStoreProvider, withProviders } from '@app';
@@ -7,6 +8,7 @@ import '@app/styles/Global.scss';
 import '@app/styles/global.css';
 
 import { MainLayout } from '@widgets/main-layout';
+import { usePlaylistModal } from '@widgets/playlist';
 
 export const IsSsrMobileContext = createContext(false);
 
@@ -33,11 +35,21 @@ const WrappedApp: React.FC<AppProps> = ({ Component, pageProps }: AppProps<Custo
   return (
     <WithStoreProvider>
       <IsSsrMobileContext.Provider value={pageProps.isSsrMobile}>
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
+        <Wrapper Component={Component} pageProps={pageProps} />
       </IsSsrMobileContext.Provider>
     </WithStoreProvider>
   );
 };
 export default withProviders(WrappedApp);
+
+const DynamicPlaylistModal = dynamic(() => import('@widgets/playlist'), { loading: () => <p>Loading...</p> });
+//тут работает redux и хук будет реагировать на изменения стейта
+const Wrapper = ({ Component, pageProps }) => {
+  const playlistModal = usePlaylistModal();
+  return (
+    <MainLayout>
+      <Component {...pageProps} />
+      {playlistModal.isVisible ? <DynamicPlaylistModal isVisible={playlistModal.isVisible} /> : null}
+    </MainLayout>
+  );
+};
